@@ -13,6 +13,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:request-config>
 	<flow name="api_led_connectivityFlow" doc:id="6ed25ddb-bda2-4f4a-9137-0088e58df662" >
 		<http:listener doc:name="Listener" doc:id="ea66d7fe-9aa0-49f7-b650-3c77220ab782" config-ref="HTTP_Listener_config" path="/processlayer"/>
+		<logger level="INFO" doc:name="Logger" doc:id="13617804-314b-4cc8-bd69-e8f4672473e5" message='#["flow starts logger"]'/>
 		<ee:transform doc:name="Transform Message" doc:id="2043b343-55e7-484a-94e6-25e8ecd501b3" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -37,5 +38,6 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="bc1ab93c-5ff3-455a-856a-49225b08d37b" message='#["flow end logger"]'/>
 	</flow>
 </mule>
